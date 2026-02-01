@@ -1,0 +1,40 @@
+{
+  "name": "prediction-trading-venue",
+  "version": "1.0.0",
+  "description": "Automated Prediction Trading Venue - AI-Powered Prediction Market Exchange",
+  "main": "api-server.py",
+  "scripts": {
+    "start": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "install-frontend": "cd frontend && npm install",
+    "dev": "./launch-full-dashboard.sh",
+    "api": "python3 api-server.py",
+    "demo": "python3 demo.py",
+    "status": "python3 check_status.py",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "ai",
+    "prediction-markets",
+    "trading", 
+    "automation",
+    "react",
+    "dashboard",
+    "crypto",
+    "blockchain"
+  ],
+  "author": "Ether - Crypto Trading Swarm Agent",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eli5defi/prediction-trading-venue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eli5defi/prediction-trading-venue/issues"
+  },
+  "homepage": "https://github.com/eli5defi/prediction-trading-venue#readme",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  }
+}
