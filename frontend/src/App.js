@@ -131,19 +131,30 @@ function App() {
   const loadSystemData = useCallback(async () => {
     setRefreshing(true);
     try {
-      // In a real app, this would be an API call
-      // For now, load from demo files
-      const response = await fetch('/api/system-status');
+      // Get API URL from environment or use relative path
+      const apiUrl = process.env.REACT_APP_API_URL || '';
+      const isLiveMode = process.env.REACT_APP_DATA_SOURCE === 'live';
+      
+      console.log(`Loading ${isLiveMode ? 'LIVE' : 'DEMO'} data from: ${apiUrl}/api/system-status`);
+      
+      const response = await fetch(`${apiUrl}/api/system-status`);
       if (response.ok) {
         const data = await response.json();
+        
+        // Add data source indicator
+        data.isLiveData = isLiveMode;
+        data.dataSource = data.data_source || (isLiveMode ? 'live' : 'demo');
+        
         setSystemData(data);
         setIsConnected(true);
+        
+        console.log(`✅ Loaded ${data.dataSource} data successfully`);
       } else {
-        // Fallback to demo data
+        console.warn('API request failed, falling back to demo data');
         loadDemoData();
       }
     } catch (error) {
-      console.log('Loading demo data...');
+      console.log('API unavailable, loading demo data...', error.message);
       loadDemoData();
     }
     setLastUpdate(new Date());
@@ -206,6 +217,16 @@ function App() {
                 <div className={`w-2 h-2 rounded-full mr-2 ${isConnected ? 'bg-green-500' : 'bg-red-500'}`}></div>
                 {isConnected ? 'Connected' : 'Disconnected'}
               </div>
+              
+              {systemData?.dataSource && (
+                <div className={`px-2 py-1 rounded-full text-xs font-medium border ${
+                  systemData.dataSource === 'live' 
+                    ? 'bg-green-500/20 text-green-400 border-green-500/30' 
+                    : 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'
+                }`}>
+                  {systemData.dataSource === 'live' ? '🔴 LIVE DATA' : '🎭 DEMO DATA'}
+                </div>
+              )}
               
               <button 
                 onClick={loadSystemData}

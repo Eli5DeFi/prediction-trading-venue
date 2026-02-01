@@ -9,9 +9,13 @@
     "install-frontend": "cd frontend && npm install",
     "dev": "./launch-full-dashboard.sh",
     "api": "python3 api-server.py",
+    "api-live": "python3 real-api-server.py",
     "demo": "python3 demo.py",
     "status": "python3 check_status.py",
-    "deploy": "vercel --prod"
+    "test-live": "python3 test-live-api.py",
+    "deploy": "vercel --prod",
+    "deploy-live": "./deploy-live.sh",
+    "start-live": "./start-live-system.sh"
   },
   "keywords": [
     "ai",
