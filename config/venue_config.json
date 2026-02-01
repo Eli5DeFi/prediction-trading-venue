@@ -1,0 +1,198 @@
+{
+  "venue_info": {
+    "name": "Ether's Automated Prediction Exchange",
+    "version": "1.0.0",
+    "description": "Decentralized prediction trading venue for AI agents"
+  },
+  
+  "market_creation": {
+    "auto_create_interval_hours": 6,
+    "max_active_markets": 25,
+    "market_types": ["crypto_price", "ai_performance", "tech_trends"],
+    "crypto_markets": {
+      "assets": ["BTC", "ETH", "SOL", "ARB", "AVAX"],
+      "price_targets": {
+        "short_term_multiplier": 1.05,
+        "medium_term_multiplier": 1.15,
+        "long_term_multiplier": 1.25
+      },
+      "durations": {
+        "short": 7,
+        "medium": 30,
+        "long": 90
+      }
+    }
+  },
+
+  "trading": {
+    "execution_threshold": 0.70,
+    "high_confidence_threshold": 0.80,
+    "max_position_size": 0.025,
+    "max_daily_trades": 10,
+    "risk_tolerance": "medium",
+    "stop_loss": 0.02,
+    "take_profit_multiplier": 2.0,
+    "allowed_assets": ["BTC-USDT", "ETH-USDT", "SOL-USDT", "ARB-USDT", "AVAX-USDT"]
+  },
+
+  "agents": {
+    "min_agents_per_market": 3,
+    "max_agents_per_market": 12,
+    "reputation_weight": 0.4,
+    "performance_weight": 0.3,
+    "recency_weight": 0.3,
+    "agent_types": {
+      "crypto_specialist": {
+        "focus": "crypto_price",
+        "accuracy_bonus": 1.2,
+        "stake_multiplier": 1.5
+      },
+      "ai_specialist": {
+        "focus": "ai_performance", 
+        "accuracy_bonus": 1.1,
+        "stake_multiplier": 1.3
+      },
+      "trend_analyst": {
+        "focus": "tech_trends",
+        "accuracy_bonus": 1.15,
+        "stake_multiplier": 1.4
+      },
+      "market_maker": {
+        "focus": "liquidity",
+        "spread_target": 0.01,
+        "min_liquidity": 1000
+      },
+      "arbitrage_hunter": {
+        "focus": "inefficiencies",
+        "profit_threshold": 0.02,
+        "execution_speed": "fast"
+      }
+    }
+  },
+
+  "venue": {
+    "market_maker_fee": 0.002,
+    "taker_fee": 0.005,
+    "performance_fee": 0.30,
+    "min_liquidity": 1000.0,
+    "max_venue_exposure": 0.10,
+    "daily_volume_target": 50000,
+    "revenue_sharing": {
+      "venue": 0.40,
+      "agents": 0.35,
+      "development": 0.15,
+      "insurance": 0.10
+    }
+  },
+
+  "reputation": {
+    "initial_score": 1000,
+    "max_score": 10000,
+    "accuracy_weight": 0.4,
+    "volume_weight": 0.2,
+    "consistency_weight": 0.2,
+    "innovation_weight": 0.2,
+    "decay_rate": 0.95,
+    "verification_bonus": {
+      "basic": 1.1,
+      "verified": 1.2,
+      "expert": 1.5
+    }
+  },
+
+  "integrations": {
+    "moltbook": {
+      "enabled": true,
+      "karma_weight": 0.25,
+      "api_endpoint": "https://api.moltbook.com",
+      "reputation_sync_interval": 3600
+    },
+    "bankr": {
+      "enabled": true,
+      "token_multiplier": 2.0,
+      "revenue_share": 0.25
+    },
+    "erc8004": {
+      "enabled": true,
+      "identity_verification": true,
+      "contract_address": "0x..."
+    },
+    "hyperliquid": {
+      "enabled": true,
+      "max_leverage": 5,
+      "funding_rate_threshold": 0.01
+    }
+  },
+
+  "risk_management": {
+    "max_correlation": 0.7,
+    "position_limits": {
+      "per_asset": 0.05,
+      "per_market": 0.03,
+      "total_exposure": 0.15
+    },
+    "stop_loss": {
+      "trailing": true,
+      "initial": 0.02,
+      "adjustment": 0.005
+    },
+    "circuit_breakers": {
+      "daily_loss_limit": 0.10,
+      "consecutive_losses": 5,
+      "volatility_threshold": 0.05
+    }
+  },
+
+  "automation": {
+    "cycle_interval_minutes": 30,
+    "market_scan_interval": 15,
+    "agent_health_check": 60,
+    "performance_review_hours": 24,
+    "auto_scale_agents": true,
+    "auto_adjust_thresholds": true
+  },
+
+  "monitoring": {
+    "enable_dashboard": true,
+    "dashboard_port": 8080,
+    "metrics_retention_days": 30,
+    "alert_thresholds": {
+      "low_accuracy": 0.50,
+      "high_drawdown": 0.05,
+      "low_volume": 1000
+    },
+    "notifications": {
+      "telegram_enabled": true,
+      "email_enabled": false,
+      "webhook_url": null
+    }
+  },
+
+  "data_sources": {
+    "price_feeds": [
+      "coingecko",
+      "coinmarketcap", 
+      "binance_api"
+    ],
+    "ai_performance": [
+      "internal_metrics",
+      "moltbook_karma",
+      "bankr_tokens"
+    ],
+    "tech_trends": [
+      "reddit_api",
+      "twitter_api",
+      "github_trending"
+    ]
+  },
+
+  "storage": {
+    "database_type": "sqlite",
+    "backup_interval_hours": 6,
+    "retention_policy": {
+      "raw_predictions": 90,
+      "aggregated_data": 365,
+      "performance_metrics": 730
+    }
+  }
+}
