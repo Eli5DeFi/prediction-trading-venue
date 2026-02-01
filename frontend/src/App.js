@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   TrendingUp, 
-  TrendingDown, 
   Activity, 
   Users, 
   Target, 
   DollarSign,
-  BarChart3,
-  Settings,
-  Play,
-  Pause,
   RefreshCw
 } from 'lucide-react';
 import './App.css';
 
 // Import components
-import MarketOverview from './components/MarketOverview';
 import TradingPerformance from './components/TradingPerformance';
 import AgentStatus from './components/AgentStatus';
 import PredictionMarkets from './components/PredictionMarkets';
@@ -27,35 +21,6 @@ function App() {
   const [isConnected, setIsConnected] = useState(false);
   const [lastUpdate, setLastUpdate] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
-
-  // Load system data
-  useEffect(() => {
-    loadSystemData();
-    const interval = setInterval(loadSystemData, 30000); // Update every 30 seconds
-    return () => clearInterval(interval);
-  }, []);
-
-  const loadSystemData = async () => {
-    setRefreshing(true);
-    try {
-      // In a real app, this would be an API call
-      // For now, load from demo files
-      const response = await fetch('/api/system-status');
-      if (response.ok) {
-        const data = await response.json();
-        setSystemData(data);
-        setIsConnected(true);
-      } else {
-        // Fallback to demo data
-        loadDemoData();
-      }
-    } catch (error) {
-      console.log('Loading demo data...');
-      loadDemoData();
-    }
-    setLastUpdate(new Date());
-    setRefreshing(false);
-  };
 
   const loadDemoData = () => {
     // Demo data structure
@@ -162,6 +127,35 @@ function App() {
     });
     setIsConnected(true);
   };
+
+  const loadSystemData = useCallback(async () => {
+    setRefreshing(true);
+    try {
+      // In a real app, this would be an API call
+      // For now, load from demo files
+      const response = await fetch('/api/system-status');
+      if (response.ok) {
+        const data = await response.json();
+        setSystemData(data);
+        setIsConnected(true);
+      } else {
+        // Fallback to demo data
+        loadDemoData();
+      }
+    } catch (error) {
+      console.log('Loading demo data...');
+      loadDemoData();
+    }
+    setLastUpdate(new Date());
+    setRefreshing(false);
+  }, []);
+
+  // Load system data
+  useEffect(() => {
+    loadSystemData();
+    const interval = setInterval(loadSystemData, 30000); // Update every 30 seconds
+    return () => clearInterval(interval);
+  }, [loadSystemData]);
 
   const formatCurrency = (value) => {
     return new Intl.NumberFormat('en-US', {

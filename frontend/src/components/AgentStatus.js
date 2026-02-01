@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, Activity, Target, TrendingUp, Star, Zap, Brain, BarChart3 } from 'lucide-react';
+import { Users, Activity, Target, TrendingUp, Star, BarChart3 } from 'lucide-react';
 
 const AgentStatus = ({ agents }) => {
   const [selectedAgent, setSelectedAgent] = useState(null);
@@ -294,7 +294,7 @@ const AgentStatus = ({ agents }) => {
           })}
         </div>
 
-        {!agents || agents.length === 0 && (
+        {(!agents || agents.length === 0) && (
           <div className="text-center py-8 text-gray-400">
             <Users className="h-12 w-12 mx-auto mb-3 opacity-50" />
             <p>No active agents</p>

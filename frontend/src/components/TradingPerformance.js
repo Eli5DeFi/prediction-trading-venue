@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TrendingUp, TrendingDown, DollarSign, Target, Clock, ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import { TrendingUp, DollarSign, Target, Clock, ArrowUpRight, ArrowDownRight } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
 const TradingPerformance = ({ trades, metrics }) => {
@@ -263,7 +263,7 @@ const TradingPerformance = ({ trades, metrics }) => {
               })}
             </div>
 
-            {!trades || trades.length === 0 && (
+            {(!trades || trades.length === 0) && (
               <div className="text-center py-8 text-gray-400">
                 <DollarSign className="h-12 w-12 mx-auto mb-3 opacity-50" />
                 <p>No recent trades</p>

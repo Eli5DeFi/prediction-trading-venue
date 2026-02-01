@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Activity, TrendingUp, TrendingDown, Users, DollarSign, Target, Zap, Clock } from 'lucide-react';
+import { Activity, TrendingUp, TrendingDown, Users, Target, Zap, Clock } from 'lucide-react';
 
 const LiveFeed = ({ trades }) => {
   const [feedItems, setFeedItems] = useState([]);

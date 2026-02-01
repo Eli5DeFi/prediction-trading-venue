@@ -231,7 +231,7 @@ const PredictionMarkets = ({ markets }) => {
           })}
         </div>
 
-        {!markets || markets.length === 0 && (
+        {(!markets || markets.length === 0) && (
           <div className="text-center py-8 text-gray-400">
             <TrendingUp className="h-12 w-12 mx-auto mb-3 opacity-50" />
             <p>No active prediction markets</p>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, Server, Zap, AlertCircle, CheckCircle, Clock } from 'lucide-react';
+import { Activity, Zap, AlertCircle, CheckCircle, Clock } from 'lucide-react';
 
 const SystemHealth = ({ uptime, status, metrics }) => {
   const getHealthStatus = () => {

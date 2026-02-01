@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, TrendingDown, Target, DollarSign } from 'lucide-react';
+import { TrendingUp, Target, DollarSign } from 'lucide-react';
 
 const MarketOverview = ({ markets, metrics }) => {
   const formatCurrency = (value) => {
